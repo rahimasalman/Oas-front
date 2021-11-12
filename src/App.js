@@ -1,16 +1,11 @@
 import './App.css'
+import SignUp from './pages/SignUp/SignUp'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>
-          <code>OAS</code>
-        </h1>
-        <h5>Office Administration System</h5>
-        <p> Login page </p>
-      </header>
-    </div>
+    <>
+      <SignUp />
+    </>
   )
 }
 
