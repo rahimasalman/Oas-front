@@ -8,6 +8,7 @@ function App() {
             <code>OAS</code>
           </h1>
           <h5>Office Administration System</h5>
+            <p> Login page created</p>
         </header>
       </div>
   );
