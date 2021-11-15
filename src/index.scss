@@ -1,5 +1,8 @@
 body {
-  overflow: hidden;
+  @media only screen and (min-width: 768px) {
+    overflow: hidden;
+  }
+  overflow-x: hidden;
 }
 
 .main {
@@ -7,6 +10,10 @@ body {
   background-color: #f1f1f1;
 
   .left-side {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+
     .back-image {
       width: 100%;
       height: 100%;
@@ -15,12 +22,32 @@ body {
     }
   }
   .right-side {
+    @media only screen and (max-width: 768px) {
+      justify-content: center;
+      align-items: center;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      padding: 2rem !important;
+      // align-items: center;
+    }
     h1 {
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 2rem;
+      }
+      @media only screen and (max-width: 768px) {
+        text-align: center;
+      }
       span {
         font-size: 2.2rem;
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          font-size: inherit;
+        }
       }
     }
     form {
+      @media only screen and (max-width: 768px) {
+        min-width: 25rem;
+      }
       .form-group {
         width: 70%;
         label {
@@ -32,9 +59,15 @@ body {
             border: 1px solid #949494;
           }
         }
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+        }
       }
       .btn {
         width: 30%;
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+        }
       }
       p {
         color: #2b2b2b;
@@ -46,3 +79,14 @@ body {
     }
   }
 }
+
+// /* Extra small devices (phones, 600px and down) */
+// @media only screen and (max-width: 640px) {...}
+// /* Small devices (portrait tablets and large phones, 600px and up) */
+// @media only screen and (min-width: 768px) {...}
+// /* Medium devices (landscape tablets, 768px and up) */
+// @media only screen and (min-width: 1024px) {...}
+// /* Large devices (laptops/desktops, 992px and up) */
+// @media only screen and (min-width: 1280px) {...}
+// /* Extra large devices (large laptops and desktops, 1200px and up) */
+// @media only screen and (min-width: 1536px) {...}
