@@ -50,6 +50,7 @@ body {
       }
       .form-group {
         width: 70%;
+        position: relative;
         label {
           color: #252525;
         }
@@ -58,6 +59,13 @@ body {
           &:focus {
             border: 1px solid #949494;
           }
+        }
+        .togglePassword {
+          display: inline-block;
+          position: absolute;
+          top: 1.9rem;
+          right: 1rem;
+          cursor: pointer;
         }
         @media only screen and (max-width: 768px) {
           width: 100%;
