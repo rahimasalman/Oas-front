@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Nav, Navbar, NavItem, NavbarBrand, Row, Col } from 'reactstrap'
 import data from './data.js'
+
 function Home() {
   const [users, setUsers] = useState(data)
   const deleteUser = (id) => setUsers(users.filter((user) => user.ID !== id))
@@ -52,36 +53,6 @@ function Home() {
               </tr>
             )
           })}
-          {/* <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>mark@gmail.com</td>
-            <td>
-              <Link to="/" className="btn btn-danger">
-                Delete
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>mark@gmail.com</td>
-            <td>
-              <Link to="/" className="btn btn-danger">
-                Delete
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>mark@gmail.com</td>
-            <td>
-              <Link to="/" className="btn btn-danger">
-                Delete
-              </Link>
-            </td>
-          </tr> */}
         </tbody>
       </table>
     </div>
