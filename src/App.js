@@ -1,6 +1,7 @@
 import './App.css'
-import DashBoard from './pages/Dashboard/Dashboard'
 import SignIn from './pages/SignIn/SignIn'
+import Home from './Home'
+import AddUser from './AddUser'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -9,7 +10,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<SignIn />} />
-        <Route exact path="/dashboard" element={<DashBoard />} />
+          <Route exact path="/home" element={<Home />} />
+        <Route exact path="/add" element={<AddUser />} />
       </Routes>
     </Router>
   )
