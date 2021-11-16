@@ -22,7 +22,6 @@ function SignIn() {
   const onSubmitForm = (e) => {
     e.preventDefault()
     navigate('/dashboard')
-    // alert('A name was submitted: ' + name)
   }
   return (
     <div className="main row">
@@ -62,7 +61,7 @@ function SignIn() {
             </span>
           </div>
           <button type="submit" className="m-2 btn btn-danger my-3">
-            Sign In
+            Login
           </button>
         </form>
       </div>

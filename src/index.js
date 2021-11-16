@@ -4,7 +4,6 @@ import App from './App'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import './index.scss'
-import 'devextreme/dist/css/dx.light.css'
 
 ReactDOM.render(
   <React.StrictMode>
