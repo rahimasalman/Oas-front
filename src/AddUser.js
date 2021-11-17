@@ -19,7 +19,6 @@ const AddUser = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // console.log(process.env.REACT_APP_API_URL)
     axios
       .post(
         `${process.env.REACT_APP_API_URL}api/register`,
@@ -33,7 +32,13 @@ const AddUser = () => {
           },
         }
       )
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res)
+        setUser({
+          username: '',
+          email: '',
+        })
+      })
       .catch((err) => console.log(err))
   }
 
