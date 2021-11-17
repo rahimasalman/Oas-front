@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Nav, Navbar, NavItem, NavbarBrand, Row, Col } from 'reactstrap'
@@ -7,6 +8,15 @@ function Home() {
   const [users, setUsers] = useState(data)
   const deleteUser = (id) => setUsers(users.filter((user) => user.ID !== id))
 
+  useEffect(() => {
+    axios
+      .get('')
+      .then((res) => {
+        console.log(res)
+        setUsers()
+      })
+      .catch((err) => console.log(err))
+  }, [])
   return (
     <div className="container">
       <Navbar color="dark" dark className="mb-3">

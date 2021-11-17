@@ -12,35 +12,35 @@ const AddUser = () => {
   })
 
   const { username, email } = user
+
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value })
   }
 
-  const onSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault()
-    console.log(username, email)
-  }
-
-  useEffect(() => {
-    const renderData = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/users`
-        )
-        if (res.data.status === 200) {
-          setData(res.data.users)
+    // console.log(process.env.REACT_APP_API_URL)
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}api/register`,
+        {
+          name: user.username,
+          email: user.email,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
-      } catch (err) {
-        console.log(err.message)
-      }
-    }
-    renderData()
-  }, [])
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+  }
 
   return (
     <>
       <h2 className="text-center mb-4">Add a user</h2>
-      <Form className="container m-3" onSubmit={(e) => onSubmit(e)}>
+      <Form className="container m-3" onSubmit={(e) => submitHandler(e)}>
         <FormGroup>
           <Label>Name</Label>
           <Input
