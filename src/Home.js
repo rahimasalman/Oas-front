@@ -1,24 +1,50 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, setStatus } from 'react'
 import { Link } from 'react-router-dom'
 import { Nav, Navbar, NavItem, NavbarBrand, Row, Col } from 'reactstrap'
 import data from './data.js'
 
 function Home() {
-  const [users, setUsers] = useState(data)
-  const deleteUser = (id) => setUsers(users.filter((user) => user.ID !== id))
+  const [users, setUsers] = useState([])
 
-  useEffect(() => {
+  const deleteUser = (id) => {
     axios
-      .get('')
+      .delete(`${process.env.REACT_APP_API_URL}api/delete/${id}`, {
+        headers: {
+          Authorization: 'Bearer 48|KLRu1k2HXCX2RN9CPRlHCBWshR69CU37rtpxa9kG',
+        },
+      })
       .then((res) => {
         console.log(res)
-        setUsers()
+        getUsers()
       })
       .catch((err) => console.log(err))
+  }
+
+  const getUsers = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}api/index`, {
+        headers: {
+          Authorization: 'Bearer 48|KLRu1k2HXCX2RN9CPRlHCBWshR69CU37rtpxa9kG',
+        },
+      })
+      .then((res) => {
+        if (res.data.users) {
+          setUsers(res.data.users)
+        } else {
+          setUsers([])
+        }
+        console.log(res.data.users)
+      })
+      .catch((err) => console.log(err))
+  }
+
+  useEffect(() => {
+    getUsers()
   }, [])
+
   return (
-    <div className="container">
+    <div className="container home">
       <Navbar color="dark" dark className="mb-3">
         <Row className="w-100 mx-3">
           <Col lg={10}>
@@ -46,17 +72,17 @@ function Home() {
           </tr>
         </thead>
         <tbody>
-          {users.map((item, index) => {
+          {users.map((user, index) => {
             return (
               <tr key={index}>
-                <th scope="row">{item.ID}</th>
-                <td>{item.Username}</td>
-                <td>{item.Email}</td>
+                <th scope="row">{user.id}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
                 <td>
                   <button
                     type="button"
                     className="btn btn-danger"
-                    onClick={() => deleteUser(item.ID)}>
+                    onClick={() => deleteUser(user.id)}>
                     Delete
                   </button>
                 </td>
