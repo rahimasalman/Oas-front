@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/add" element={<AddUser />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/error" element={<Error />} />
+        <Route exact path="*" element={<Error />} />
       </Routes>
     </Router>
   )
