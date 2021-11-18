@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import { useNavigate } from 'react-router-dom'
 
 import axios from 'axios'
 
 const AddUser = () => {
-  const [data, setData] = useState([])
+
+  const [error, setError] = useState(false)
+
   const [user, setUser] = useState({
     username: '',
     email: '',
   })
+
+  const navigate = useNavigate()
+
 
   const { username, email } = user
 
@@ -17,7 +23,23 @@ const AddUser = () => {
     setUser({ ...user, [e.target.name]: e.target.value })
   }
 
+  useEffect(() => {
+
+    if (error === true) {
+      const timeId = setTimeout(() => {
+        // After 3 seconds set the show value to false
+        setError(false)
+      }, 5000)
+
+      return () => {
+        clearTimeout(timeId)
+      }
+  }
+  }, [error]);
+
+
   const submitHandler = (e) => {
+
     e.preventDefault()
     axios
       .post(
@@ -38,13 +60,20 @@ const AddUser = () => {
           username: '',
           email: '',
         })
+        navigate('/home')
       })
-      .catch((err) => console.log(err))
+      .catch((err) =>
+            err.response.status === 422 ?  setError(true) : setError(false)
+         )
   }
 
   return (
     <>
+
       <h2 className="text-center mb-4">Add a user</h2>
+      <div className={`alert alert-danger text-center m-3 ${error === true ? 'd-block' : 'd-none'}`} role="alert">
+        Name or email address is invalid!
+      </div>
       <Form className="container m-3" onSubmit={(e) => submitHandler(e)}>
         <FormGroup>
           <Label>Name</Label>

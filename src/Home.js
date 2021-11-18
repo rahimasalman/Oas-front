@@ -1,8 +1,7 @@
 import axios from 'axios'
-import React, { useState, useEffect, setStatus } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Nav, Navbar, NavItem, NavbarBrand, Row, Col } from 'reactstrap'
-import data from './data.js'
 function Home() {
 
     const tokenAdmin = localStorage.getItem('tokenAdmin');
@@ -36,7 +35,6 @@ function Home() {
           } else {
             setUsers([])
           }
-          console.log(res.data.users)
         })
         .catch((err) => console.log(err))
   }
@@ -48,8 +46,8 @@ function Home() {
     }
 
     useEffect(() => {
-        {tokenAdmin ? getUsers() : navigate('/');}
-    }, [tokenAdmin])
+        tokenAdmin ? getUsers() : navigate('/')
+    }, [tokenAdmin, navigate])
   return (
       <div className="container home">
         <Navbar color="dark" dark className="mb-3">
