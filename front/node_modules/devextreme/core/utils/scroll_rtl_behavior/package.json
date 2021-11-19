@@ -1,0 +1,6 @@
+{
+  "sideEffects": false,
+  "main": "../../../cjs/core/utils/scroll_rtl_behavior.js",
+  "module": "../../../esm/core/utils/scroll_rtl_behavior.js",
+  "typings": "../scroll_rtl_behavior.d.ts"
+}
