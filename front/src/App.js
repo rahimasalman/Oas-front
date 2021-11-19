@@ -18,6 +18,7 @@ function App() {
         {tokenUser && <Route exact path="/dashboard" element={<Dashboard />} />}
         <Route exact path="/home" element={<Home />} />
         {tokenAdmin && <Route exact path="/home" element={<Home />} />}
+        <Route exact path="/add" element={<AddUser />} />
         {tokenAdmin && <Route exact path="/add" element={<AddUser />} />}
         <Route exact path="*" element={<SignIn />} />
       </Routes>

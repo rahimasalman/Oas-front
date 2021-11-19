@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const AddUser = () => {
-
   const [error, setError] = useState(false)
 
   const [user, setUser] = useState({
@@ -16,7 +15,6 @@ const AddUser = () => {
 
   const navigate = useNavigate()
 
-
   const { username, email } = user
 
   const onInputChange = (e) => {
@@ -24,7 +22,6 @@ const AddUser = () => {
   }
 
   useEffect(() => {
-
     if (error === true) {
       const timeId = setTimeout(() => {
         // After 3 seconds set the show value to false
@@ -34,12 +31,10 @@ const AddUser = () => {
       return () => {
         clearTimeout(timeId)
       }
-  }
-  }, [error]);
-
+    }
+  }, [error])
 
   const submitHandler = (e) => {
-
     e.preventDefault()
     axios
       .post(
@@ -63,15 +58,18 @@ const AddUser = () => {
         navigate('/home')
       })
       .catch((err) =>
-            err.response.status === 422 ?  setError(true) : setError(false)
-         )
+        err.response.status === 422 ? setError(true) : setError(false)
+      )
   }
 
   return (
     <>
-
       <h2 className="text-center mb-4">Add a user</h2>
-      <div className={`alert alert-danger text-center m-3 ${error === true ? 'd-block' : 'd-none'}`} role="alert">
+      <div
+        className={`alert alert-danger text-center m-3 ${
+          error === true ? 'd-block' : 'd-none'
+        }`}
+        role="alert">
         Name or email address is invalid!
       </div>
       <Form className="container m-3" onSubmit={(e) => submitHandler(e)}>

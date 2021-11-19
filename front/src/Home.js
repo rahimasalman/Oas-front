@@ -7,16 +7,21 @@ function Home() {
   const [users, setUsers] = useState([])
 
   const deleteUser = (id) => {
-    axios
-      .delete(`${process.env.REACT_APP_API_URL}api/delete/${id}`, {
-        headers: {
-          Authorization: 'Bearer 48|KLRu1k2HXCX2RN9CPRlHCBWshR69CU37rtpxa9kG',
-        },
-      })
-      .then((res) => {
-        getUsers()
-      })
-      .catch((err) => console.log(err))
+    let response = window.confirm('Do you really want to delete?')
+    if (response) {
+      axios
+        .delete(`${process.env.REACT_APP_API_URL}api/delete/${id}`, {
+          headers: {
+            Authorization: 'Bearer 48|KLRu1k2HXCX2RN9CPRlHCBWshR69CU37rtpxa9kG',
+          },
+        })
+        .then((res) => {
+          getUsers()
+        })
+        .catch((err) => console.log(err))
+    } else {
+      return
+    }
   }
 
   const navigate = useNavigate()
@@ -53,7 +58,6 @@ function Home() {
         <Row className="w-100 mx-3">
           <Col lg={9}>
             <NavbarBrand href="/home" className="m-3">
-              {' '}
               OAS Team
             </NavbarBrand>
           </Col>
