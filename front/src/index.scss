@@ -99,7 +99,10 @@
     top: 0;
     left: 0;
     background-color: #23398a;
-    overflow-x: hidden;
+
+    .rightDrop {
+      border: 1px solid black;
+    }
 
     &_logo {
       .logo {
@@ -111,35 +114,70 @@
 
     &_links {
       a {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.3rem 1.5rem;
         text-decoration: none;
-        color: #f5f5f5;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+
+        .dropdownItems {
+          list-style: none;
+          // display: inline-block;
+          border: 1px solid #d7d7d7;
+          margin-bottom: 0;
+          padding-left: 0;
+          color: black;
+          background-color: #eceff2;
+          position: absolute;
+          top: 0;
+          left: 13.13rem;
+          width: 16.38rem;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+          li {
+            white-space: nowrap;
+            border-bottom: 1px solid #d7d7d7;
+            padding: 0.8rem 1.4rem;
+
+            &:not(:first-of-type) {
+              border-bottom: 1px solid #d7d7d7;
+            }
+
+            img {
+              margin-right: 0.8rem;
+              height: 26px;
+              width: 26px;
+              object-fit: cover;
+            }
+          }
+        }
 
         &:not(:last-of-type) {
           border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        img {
-          height: 32px;
-          width: 32px;
-          object-fit: cover;
-        }
-
         .link {
           display: flex;
           align-items: center;
+          justify-content: space-between;
+          padding: 1.3rem 1.5rem;
+          color: #f5f5f5;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
           img {
-            margin-right: 0.8rem;
+            height: 32px;
+            width: 32px;
+            object-fit: cover;
+          }
+
+          .arrow-icon {
+            height: 24px;
+            width: 24px;
           }
         }
 
-        .arrow-icon {
-          height: 24px;
-          width: 24px;
+        &:hover {
+          .link {
+            background: #4462d0;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          }
         }
       }
     }

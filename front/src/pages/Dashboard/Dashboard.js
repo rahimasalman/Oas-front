@@ -1,11 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../images/logo-monochrome.svg'
 import homepage from '../../images/homepage-icon.svg'
 import settings from '../../images/settings-icon.svg'
 import arrowIcon from '../../images/icon-arrow.svg'
+import categoriesIcon from '../../images/icon-categories.svg'
+import typesIcon from '../../images/icon-types.svg'
 
 function Dashboard() {
+  const [dropRight, setDropRight] = useState(false)
+
+  const onMouseEnter = () => {
+    setDropRight(true)
+  }
+  const onMouseLeave = () => {
+    setDropRight(false)
+  }
+
   const tokenUser = localStorage.getItem('tokenUsers')
   const logoutHandler = () => {
     if (tokenUser) {
@@ -29,15 +40,25 @@ function Dashboard() {
             <div className="link">
               <img src={homepage} />
               <span>Homepage</span>
+              <img src={arrowIcon} className="arrow-icon" />
             </div>
-            <img src={arrowIcon} className="arrow-icon" />
           </a>
-          <a href="#">
+          <a href="#" onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className="link">
               <img src={settings} />
               <span>Settings</span>
+              <img src={arrowIcon} className="arrow-icon" />
             </div>
-            <img src={arrowIcon} className="arrow-icon" />
+            <ul className={`dropdownItems ${dropRight ? 'd-block' : 'd-none'}`}>
+              <li>
+                <img src={categoriesIcon} />
+                Categories
+              </li>
+              <li>
+                <img src={typesIcon} />
+                Types
+              </li>
+            </ul>
           </a>
         </div>
       </nav>
