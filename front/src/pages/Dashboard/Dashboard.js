@@ -51,8 +51,10 @@ function Dashboard() {
             </div>
             <ul className={`dropdownItems ${dropRight ? 'd-block' : 'd-none'}`}>
               <li>
-                <img src={categoriesIcon} />
-                Categories
+                <Link to="/categories">
+                  <img src={categoriesIcon} />
+                  Categories
+                </Link>
               </li>
               <li>
                 <img src={typesIcon} />
