@@ -44,8 +44,10 @@ function Sidenav() {
                 </Link>
               </li>
               <li>
+                <Link to="/types">
                 <img src={typesIcon} />
                 Types
+                </Link>
               </li>
             </ul>
           </a>
