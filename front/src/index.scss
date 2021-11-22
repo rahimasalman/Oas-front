@@ -1,3 +1,7 @@
+body {
+  font-family: Montserrat sans-serif;
+}
+
 .main {
   height: 100vh;
   background-color: #f1f1f1;
@@ -118,6 +122,7 @@
         height: 47px;
         margin: 1.625rem;
       }
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     &_links {
@@ -197,6 +202,93 @@
     font-size: 28px; /* Increased text to enable scrolling */
     padding: 10px;
   }
+}
+
+.categories {
+  margin-left: 260px; /* Same as the width of the sidenav */
+  padding-top: 60px;
+  h1 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+  .container {
+    .modal {
+      .modal-header {
+        color: white;
+        background-color: rgba(35, 57, 138, 1);
+        .close-button {
+          border: none;
+          background-color: transparent;
+        }
+      }
+      .modal-body {
+        form {
+          .col-form-label::after {
+            content: '*';
+            color: red;
+          }
+        }
+      }
+    }
+
+    .add-button {
+      font-size: 16px;
+      font-weight: 700;
+      width: 120px;
+      line-height: 170.23%;
+      margin-right: -0.7rem;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    table.table-bordered {
+      width: 60rem;
+      border-left: transparent;
+      margin-top: 4rem;
+    }
+
+    table.table-bordered > thead > tr {
+      border-top: transparent;
+    }
+
+    table.table-bordered > tbody {
+      border-top: transparent;
+    }
+
+    table.table-bordered > tbody > tr > td > button {
+      outline: none;
+      border: none;
+      background-color: transparent;
+
+      img {
+        width: 30px;
+        margin-left: 0.4rem;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+}
+
+.operation-name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.plus-icon {
+  padding-right: 0.5rem;
+  padding-left: 0;
+  margin: 0;
+}
+.category-name {
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  color: #525653;
 }
 
 // .home {

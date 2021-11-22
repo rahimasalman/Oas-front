@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import logo from '../../images/logo-monochrome.svg'
-import homepage from '../../images/homepage-icon.svg'
-import settings from '../../images/settings-icon.svg'
-import arrowIcon from '../../images/icon-arrow.svg'
-import categoriesIcon from '../../images/icon-categories.svg'
-import typesIcon from '../../images/icon-types.svg'
-
-function Dashboard() {
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import logo from '../images/logo-monochrome.svg'
+import homepage from '../images/homepage-icon.svg'
+import settings from '../images/settings-icon.svg'
+import arrowIcon from '../images/icon-arrow.svg'
+import categoriesIcon from '../images/icon-categories.svg'
+import typesIcon from '../images/icon-types.svg'
+function Sidenav() {
   const [dropRight, setDropRight] = useState(false)
 
   const onMouseEnter = () => {
@@ -16,18 +15,6 @@ function Dashboard() {
   const onMouseLeave = () => {
     setDropRight(false)
   }
-
-  const tokenUser = localStorage.getItem('tokenUsers')
-  const logoutHandler = () => {
-    if (tokenUser) {
-      localStorage.removeItem('tokenUsers')
-    }
-  }
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    tokenUser ? navigate('/dashboard') : navigate('/')
-  }, [tokenUser, navigate])
 
   return (
     <div className="container dashboard">
@@ -64,14 +51,8 @@ function Dashboard() {
           </a>
         </div>
       </nav>
-      <main>
-        <h1>Welcome to Office Administration System</h1>
-        <Link className="btn btn-warning m-2" to="/" onClick={logoutHandler}>
-          Log out
-        </Link>
-      </main>
     </div>
   )
 }
 
-export default Dashboard
+export default Sidenav
