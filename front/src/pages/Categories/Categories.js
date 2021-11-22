@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidenav from '../../components/Sidenav'
 import iconEdit from '../../images/icon-edit.svg'
 import iconDelete from '../../images/icon-delete.svg'
@@ -6,6 +6,52 @@ import iconClose from '../../images/icon-close.svg'
 import { FaPlus } from 'react-icons/fa'
 
 function Categories() {
+  const [category, setCategory] = useState('')
+  const [list, setList] = useState([])
+  const [isEditing, setIsEditing] = useState(false)
+  const [editId, setEditId] = useState(null)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!category) {
+      // display alert
+    } else if (category && isEditing) {
+      // editing
+      setList(
+        list.map((item) => {
+          if (item.id === editId) {
+            return { ...item, title: category }
+          }
+          return item
+        })
+      )
+      setCategory('')
+      setEditId(null)
+      setIsEditing(false)
+    } else {
+      // show alert
+      const newCategory = {
+        id: new Date().getTime().toString(),
+        title: category,
+      }
+      list.push(newCategory)
+      setCategory('')
+      console.log(list)
+    }
+  }
+
+  const removeItem = (id) => {
+    setList(list.filter((item) => item.id !== id))
+  }
+
+  const editItem = (id) => {
+    const specificItem = list.find((item) => item.id === id)
+    setIsEditing(true)
+    setEditId(id)
+    setCategory(specificItem.title)
+    console.log(specificItem)
+  }
+
   return (
     <div className="categories">
       <h1>Categories</h1>
@@ -32,15 +78,15 @@ function Categories() {
           </button>
 
           <div
-            class="modal fade"
+            className="modal fade"
             id="exampleModal"
-            tabindex="-1"
+            tabIndex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLabel">
                     Add Category
                   </h5>
                   <button
@@ -51,40 +97,42 @@ function Categories() {
                     <img src={iconClose} />
                   </button>
                 </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
+                <div className="modal-body">
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
                       <label
-                        for="validationCustomUsername"
-                        class="col-form-label">
+                        htmlFor="validationCustomUsername"
+                        className="col-form-label">
                         Add a category
                       </label>
-                      <div class="input-group has-validation">
+                      <div className="input-group has-validation">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="validationCustomUsername"
                           aria-describedby="inputGroupPrepend"
                           placeholder="Enter"
                           required
+                          value={category}
+                          onChange={(e) => {
+                            setCategory(e.target.value)
+                          }}
                         />
-                        <div class="invalid-feedback">
+                        <div className="invalid-feedback">
                           Please choose a username.
                         </div>
                       </div>
                     </div>
+                    <button type="submit" className="btn btn-success mr-2">
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-light"
+                      data-bs-dismiss="modal">
+                      Cancel
+                    </button>
                   </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-success">
-                    Save
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-light"
-                    data-bs-dismiss="modal">
-                    Cancel
-                  </button>
                 </div>
               </div>
             </div>
@@ -106,42 +154,22 @@ function Categories() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>
-                <button>
-                  <img src={iconEdit} />
-                </button>
-                <button>
-                  <img src={iconDelete} />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>
-                <button>
-                  <img src={iconEdit} />
-                </button>
-                <button>
-                  <img src={iconDelete} />
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>
-                <button>
-                  <img src={iconEdit} />
-                </button>
-                <button>
-                  <img src={iconDelete} />
-                </button>
-              </td>
-            </tr>
+            {list.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">{item.id}</th>
+                  <td>{item.title}</td>
+                  <td>
+                    <button onClick={() => editItem(item.id)}>
+                      <img src={iconEdit} />
+                    </button>
+                    <button onClick={() => removeItem(item.id)}>
+                      <img src={iconDelete} />
+                    </button>
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
