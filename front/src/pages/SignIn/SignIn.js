@@ -142,7 +142,7 @@ function SignIn() {
                 type={pass}
                 className="form-control"
                 id="exampleInputPassword1"
-                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                placeholder="Password"
               />
 
               <span className="togglePassword" onClick={onClickEye}>

@@ -6,7 +6,9 @@ import iconClose from '../../images/icon-close.svg'
 import { FaPlus } from 'react-icons/fa'
 
 function Categories() {
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState({
+    category:''
+  })
   const [list, setList] = useState([])
   const [isEditing, setIsEditing] = useState(false)
   const [editId, setEditId] = useState(null)
