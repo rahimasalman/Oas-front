@@ -14,6 +14,7 @@ import arrowIcon from './images/icon-arrow.svg'
 
 import categoriesIcon from './images/icon-categories.svg'
 import typesIcon from './images/icon-types.svg'
+import Types from "./pages/Types/Types";
 function App() {
   const tokenAdmin = localStorage.getItem('tokenAdmin')
   const tokenUser = localStorage.getItem('tokenUser')
@@ -28,6 +29,7 @@ function App() {
         {tokenUser && <Route exact path="/dashboard" element={<Dashboard />} />}
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/categories" element={<Categories />} />
+        <Route exact path="/types" element={<Types />} />
         {tokenAdmin && <Route exact path="/home" element={<Home />} />}
         <Route exact path="/add" element={<AddUser />} />
         {tokenAdmin && <Route exact path="/add" element={<AddUser />} />}
