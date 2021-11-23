@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link, useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Sidenav from '../../components/Sidenav'
 import iconEdit from '../../images/icon-edit.svg'
@@ -158,7 +158,7 @@ function Categories() {
                     className="close-button"
                     data-bs-dismiss="modal"
                     aria-label="Close">
-                    <img src={iconClose} />
+                    <img src={iconClose} alt="icon" />
                   </button>
                 </div>
                 <div className="modal-body">
@@ -239,13 +239,13 @@ function Categories() {
                     <button
                       data-bs-toggle="modal"
                       onClick={() => editItem(item.id)}>
-                      <img src={iconEdit} />
+                      <img src={iconEdit} alt="icon" />
                     </button>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal1"
                       onClick={() => setDeleteId(item.id)}>
-                      <img src={iconDelete} />
+                      <img src={iconDelete} alt="icon" />
                     </button>
                     <div
                       className="modal fade"
@@ -264,7 +264,7 @@ function Categories() {
                               className="close-button"
                               data-bs-dismiss="modal"
                               aria-label="Close">
-                              <img src={iconClose} />
+                              <img src={iconClose} alt="icon" />
                             </button>
                           </div>
                           <div className="modal-body">

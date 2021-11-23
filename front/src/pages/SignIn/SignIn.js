@@ -65,6 +65,7 @@ function SignIn() {
     } catch (error) {
       setName(name)
       setPassword('')
+      console.log(err)
       if (error.response.status === 422) {
         setErr(true)
       }
@@ -96,7 +97,7 @@ function SignIn() {
     <div className="main">
       <div className="row">
         <div className="left-side col-md-6 col-sm-12">
-          <img src={logo} className="login-logo" />
+          <img src={logo} className="login-logo" alt="icon" />
           <img src={image} alt="background" className="back-image" />
         </div>
         <div className="right-side col-md-6 col-sm-12 d-flex flex-column justify-content-center px-5">
