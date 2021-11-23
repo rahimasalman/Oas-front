@@ -8,15 +8,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Categories from './pages/Categories/Categories'
 import Types from './pages/Types/Types'
 import Orders from './pages/Orders/Orders'
+
 function App() {
   const tokenAdmin = localStorage.getItem('tokenAdmin')
   const tokenUser = localStorage.getItem('tokenUser')
-
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={<SignIn />} />
-
         <Route exact path="/dashboard" element={<Dashboard />} />
         {tokenUser && <Route exact path="/dashboard" element={<Dashboard />} />}
         <Route exact path="/dashboard" element={<Dashboard />} />
