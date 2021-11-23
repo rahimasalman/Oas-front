@@ -7,6 +7,7 @@ import arrowIcon from '../images/icon-arrow.svg'
 import categoriesIcon from '../images/icon-categories.svg'
 import typesIcon from '../images/icon-types.svg'
 import orders from '../images/icon-orders.svg'
+
 function Sidenav() {
   const [dropRight, setDropRight] = useState(false)
 
@@ -40,10 +41,7 @@ function Sidenav() {
             </div>
           </Link>
 
-          <Link
-            to="/settings"
-            onMouseOver={onMouseEnter}
-            onMouseLeave={onMouseLeave}>
+          <Link to="#" onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className="link">
               <img src={settings} alt="icon" />
               <span>Settings</span>
