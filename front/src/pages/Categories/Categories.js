@@ -6,13 +6,15 @@ import Sidenav from '../../components/Sidenav'
 import iconEdit from '../../images/icon-edit.svg'
 import iconDelete from '../../images/icon-delete.svg'
 import iconClose from '../../images/icon-close.svg'
+import iconSave from '../../images/icon-save.svg'
+import iconCancel from '../../images/icon-cancel.svg'
+
 import { FaPlus } from 'react-icons/fa'
 
 function Categories() {
   const [category, setCategory] = useState({
     name: '',
   })
-  const [editedCategory, setEditedCategory] = useState('')
   const [list, setList] = useState([])
   const [isEditing, setIsEditing] = useState(false)
   const [editId, setEditId] = useState(null)
@@ -48,25 +50,6 @@ function Categories() {
         getCategories()
       })
       .catch((err) => console.log(err))
-
-    if (!category) {
-      // display alert
-    } else if (editedCategory && isEditing) {
-      // editing
-      setList(
-        list.map((item) => {
-          if (item.id === editId) {
-            return { ...item, title: editedCategory }
-          }
-          return item
-        })
-      )
-      setEditedCategory('')
-      setEditId(null)
-      setIsEditing(false)
-    } else {
-      // show <alert>                                                                                                                                                                                                                                                                                     </alert>
-    }
   }
 
   const navigate = useNavigate()
@@ -112,8 +95,9 @@ function Categories() {
     const specificItem = list.find((item) => item.id === id)
     setIsEditing(true)
     setEditId(id)
-    setEditedCategory(specificItem.title)
-    console.log(specificItem.title)
+    setCategory(specificItem.name)
+    console.log(id)
+    console.log(specificItem)
   }
 
   return (
@@ -178,7 +162,7 @@ function Categories() {
                           placeholder="Enter"
                           required
                           name="name"
-                          value={category.name}
+                          value={category}
                           onChange={(e) => onInputChange(e)}
                         />
                         <div className="invalid-feedback">
@@ -225,11 +209,10 @@ function Categories() {
                 <tr key={index}>
                   <th scope="row">{item.id}</th>
                   <td>
-                    {isEditing ? (
+                    {editId === item.id ? (
                       <input
-                        disabled
-                        value={editedCategory}
-                        onChange={(e) => setEditedCategory(e.target.value)}
+                        value={item.name}
+                        onChange={(e) => setCategory(e.target.value)}
                       />
                     ) : (
                       <span>{item.name}</span>
@@ -239,13 +222,21 @@ function Categories() {
                     <button
                       data-bs-toggle="modal"
                       onClick={() => editItem(item.id)}>
-                      <img src={iconEdit} alt="icon" />
+                      {editId === item.id ? (
+                        <img src={iconSave} alt="icon" />
+                      ) : (
+                        <img src={iconEdit} alt="icon" />
+                      )}
                     </button>
                     <button
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal1"
                       onClick={() => setDeleteId(item.id)}>
-                      <img src={iconDelete} alt="icon" />
+                      {editId === item.id ? (
+                        <img src={iconCancel} alt="icon" />
+                      ) : (
+                        <img src={iconDelete} alt="icon" />
+                      )}
                     </button>
                     <div
                       className="modal fade"
