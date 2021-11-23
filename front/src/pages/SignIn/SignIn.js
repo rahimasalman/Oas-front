@@ -13,7 +13,6 @@ function SignIn() {
   const navigate = useNavigate()
 
   const [namePassErr, setNamePassErr] = useState(false)
-  // const [passErr, setPassErr] = useState(false)
   const [err, setErr] = useState(false)
 
   const onClickEye = () => {

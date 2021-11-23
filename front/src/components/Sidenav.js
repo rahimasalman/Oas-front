@@ -19,7 +19,7 @@ function Sidenav() {
   }
 
   return (
-    <div className="container dashboard">
+    <div className="container sidebar">
       <nav className="sidenav">
         <div className="sidenav_logo">
           <img src={logo} className="logo" alt="icon" />

@@ -12,7 +12,11 @@ import iconCancel from '../../images/icon-cancel.svg'
 import { FaPlus } from 'react-icons/fa'
 
 function Categories() {
+  let manualID = 0
   const [category, setCategory] = useState({
+    name: '',
+  })
+  const [editCategory, setEditCategory] = useState({
     name: '',
   })
   const [list, setList] = useState([])
@@ -25,6 +29,8 @@ function Categories() {
   const onInputChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value })
   }
+
+  console.log(editCategory)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -101,197 +107,204 @@ function Categories() {
   }
 
   return (
-    <div className="categories">
-      <h1>Categories</h1>
-
+    <>
       <Sidenav />
-      <div className="container">
-        <div className="col-11 text-right ">
-          <button
-            type="button"
-            className="btn btn-success add-button px-4 mb-4 rounded-3 pull-right"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            <span className="plus-icon">
-              <FaPlus
-                color="white"
-                style={{
-                  height: '20px',
-                  width: '20px',
-                  padding: '4px',
-                }}
-              />
-            </span>
-            Add
-          </button>
+      <div className="categories">
+        <h1>Categories</h1>
+        <div className="container">
+          <div className="col-11 text-right">
+            <button
+              type="button"
+              className="btn btn-success add-button px-4 mb-4 rounded-3 pull-right"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal">
+              <span>
+                <FaPlus
+                  color="white"
+                  style={{
+                    height: '20px',
+                    width: '14px',
+                    marginRight: '14',
+                  }}
+                />
+              </span>
+              Add
+            </button>
 
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">
-                    Add Category
-                  </h5>
-                  <button
-                    type="button"
-                    className="close-button"
-                    data-bs-dismiss="modal"
-                    aria-label="Close">
-                    <img src={iconClose} alt="icon" />
-                  </button>
-                </div>
-                <div className="modal-body">
-                  <form onSubmit={(e) => handleSubmit(e)}>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="validationCustomUsername"
-                        className="col-form-label">
-                        Add a category
-                      </label>
-                      <div className="input-group has-validation">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="validationCustomUsername"
-                          aria-describedby="inputGroupPrepend"
-                          placeholder="Enter"
-                          required
-                          name="name"
-                          value={category}
-                          onChange={(e) => onInputChange(e)}
-                        />
-                        <div className="invalid-feedback">
-                          Please choose a username.
+            <div
+              className="modal fade"
+              id="exampleModal"
+              tabIndex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">
+                      Add Category
+                    </h5>
+                    <button
+                      type="button"
+                      className="close-button"
+                      data-bs-dismiss="modal"
+                      aria-label="Close">
+                      <img src={iconClose} alt="icon" />
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    <form onSubmit={(e) => handleSubmit(e)}>
+                      <div className="mb-3">
+                        <label
+                          htmlFor="validationCustomUsername"
+                          className="col-form-label">
+                          Add a category
+                        </label>
+                        <div className="input-group has-validation">
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="validationCustomUsername"
+                            aria-describedby="inputGroupPrepend"
+                            placeholder="Enter"
+                            required
+                            name="name"
+                            value={category.name}
+                            onChange={(e) => onInputChange(e)}
+                          />
+                          <div className="invalid-feedback">
+                            Please choose a username.
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <button
-                      type="submit"
-                      className="btn btn-success"
-                      data-bs-dismiss="modal">
-                      Save
-                    </button>
-                    <button
-                      type="submit"
-                      className="btn btn-light mx-3"
-                      data-bs-dismiss="modal">
-                      Cancel
-                    </button>
-                  </form>
+                      <button
+                        type="submit"
+                        className="btn btn-success"
+                        data-bs-dismiss="modal">
+                        Save
+                      </button>
+                      <button
+                        type="submit"
+                        className="btn btn-light mx-3"
+                        data-bs-dismiss="modal">
+                        Cancel
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col" width="5%">
-                №
-              </th>
-              <th scope="col" className="category-name">
-                Category Name
-              </th>
-              <th scope="col" width="15%" className="operation-name">
-                Operations
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <th scope="row">{item.id}</th>
-                  <td>
-                    {editId === item.id ? (
-                      <input
-                        value={item.name}
-                        onChange={(e) => setCategory(e.target.value)}
-                      />
-                    ) : (
-                      <span>{item.name}</span>
-                    )}
-                  </td>
-                  <td>
-                    <button
-                      data-bs-toggle="modal"
-                      onClick={() => editItem(item.id)}>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" width="5%">
+                  №
+                </th>
+                <th scope="col" className="category-name">
+                  Category Name
+                </th>
+                <th scope="col" width="15%" className="operation-name">
+                  Operations
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {list.map((item, index) => {
+                manualID++
+
+                return (
+                  <tr key={index}>
+                    <th scope="row">{manualID}</th>
+                    <td>
                       {editId === item.id ? (
-                        <img src={iconSave} alt="icon" />
+                        <input
+                          value={item.name}
+                          onChange={(e) =>
+                            setEditCategory({ name: e.target.value })
+                          }
+                        />
                       ) : (
-                        <img src={iconEdit} alt="icon" />
+                        <span>{item.name}</span>
                       )}
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal1"
-                      onClick={() => setDeleteId(item.id)}>
-                      {editId === item.id ? (
-                        <img src={iconCancel} alt="icon" />
-                      ) : (
-                        <img src={iconDelete} alt="icon" />
-                      )}
-                    </button>
-                    <div
-                      className="modal fade"
-                      id="exampleModal1"
-                      tabIndex="-1"
-                      aria-labelledby="exampleModalLabel"
-                      aria-hidden="true">
-                      <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">
-                              Confirm Deletion
-                            </h5>
-                            <button
-                              type="button"
-                              className="close-button"
-                              data-bs-dismiss="modal"
-                              aria-label="Close">
-                              <img src={iconClose} alt="icon" />
-                            </button>
-                          </div>
-                          <div className="modal-body">
-                            <form>
-                              <div className="my-3 text-center">
-                                <p className="fw-bold">Delete this row?</p>
-                                <span>This action can’t be undone</span>
-                              </div>
-                              <div className="d-flex justify-content-center">
-                                <button
-                                  type="button"
-                                  data-bs-dismiss="modal"
-                                  className="btn btn-danger mx-3"
-                                  onClick={() => removeItem(deleteId)}>
-                                  Delete
-                                </button>
-                                <button
-                                  type="button"
-                                  className="btn btn-light mx-3"
-                                  data-bs-dismiss="modal">
-                                  Cancel
-                                </button>
-                              </div>
-                            </form>
+                    </td>
+                    <td>
+                      <button
+                        data-bs-toggle="modal"
+                        onClick={() => editItem(item.id)}>
+                        {editId === item.id ? (
+                          <img src={iconSave} alt="icon" />
+                        ) : (
+                          <img src={iconEdit} alt="icon" />
+                        )}
+                      </button>
+                      <button
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal1"
+                        onClick={() => setDeleteId(item.id)}>
+                        {editId === item.id ? (
+                          <img src={iconCancel} alt="icon" />
+                        ) : (
+                          <img src={iconDelete} alt="icon" />
+                        )}
+                      </button>
+                      <div
+                        className="modal fade"
+                        id="exampleModal1"
+                        tabIndex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <h5
+                                className="modal-title"
+                                id="exampleModalLabel">
+                                Confirm Deletion
+                              </h5>
+                              <button
+                                type="button"
+                                className="close-button"
+                                data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <img src={iconClose} alt="icon" />
+                              </button>
+                            </div>
+                            <div className="modal-body">
+                              <form>
+                                <div className="my-3 text-center">
+                                  <p className="fw-bold">Delete this row?</p>
+                                  <span>This action can’t be undone</span>
+                                </div>
+                                <div className="d-flex justify-content-center">
+                                  <button
+                                    type="button"
+                                    data-bs-dismiss="modal"
+                                    className="btn btn-danger mx-3"
+                                    onClick={() => removeItem(deleteId)}>
+                                    Delete
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="btn btn-light mx-3"
+                                    data-bs-dismiss="modal">
+                                    Cancel
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
