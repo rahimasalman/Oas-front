@@ -44,7 +44,6 @@ function Dashboard() {
               <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
           </Link>
-
           <Link to="#">
             <div className="link">
               <img src={orders} alt="icon" />
@@ -52,7 +51,7 @@ function Dashboard() {
               <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
           </Link>
-          <Link to="#" onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
+          <div onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className="link">
               <img src={settings} alt="icon" />
               <span>Settings</span>
@@ -72,7 +71,7 @@ function Dashboard() {
                 </Link>
               </li>
             </ul>
-          </Link>
+          </div>
         </div>
       </nav>
       <main>
