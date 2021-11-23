@@ -12,7 +12,7 @@ function Home() {
       axios
         .delete(`${process.env.REACT_APP_API_URL}api/delete/${id}`, {
           headers: {
-            Authorization: 'Bearer 48|KLRu1k2HXCX2RN9CPRlHCBWshR69CU37rtpxa9kG',
+            Authorization: 'Bearer 46|s2qMomccCBR0uO1dw6v1W9qSwtIFd6xaTXxh3FTe',
           },
         })
         .then((res) => {
@@ -30,7 +30,7 @@ function Home() {
     axios
       .get(`${process.env.REACT_APP_API_URL}api/index`, {
         headers: {
-          Authorization: 'Bearer 48|KLRu1k2HXCX2RN9CPRlHCBWshR69CU37rtpxa9kG',
+          Authorization: 'Bearer 46|s2qMomccCBR0uO1dw6v1W9qSwtIFd6xaTXxh3FTe',
         },
       })
       .then((res) => {

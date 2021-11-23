@@ -37,21 +37,22 @@ function Dashboard() {
           <img src={logo} className="logo" />
         </div>
         <div className="sidenav_links">
-          <a href="#">
+          <Link to="/dashboard">
             <div className="link">
               <img src={homepage} />
               <span>Homepage</span>
               <img src={arrowIcon} className="arrow-icon" />
             </div>
-          </a>
-          <a href="#">
+          </Link>
+
+          <a>
             <div className="link">
-              <img src={orders}/>
+              <img src={orders} />
               <span>Orders</span>
               <img src={arrowIcon} className="arrow-icon" />
             </div>
           </a>
-          <a href="#" onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
+          <a onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className="link">
               <img src={settings} />
               <span>Settings</span>
