@@ -7,6 +7,7 @@ import arrowIcon from '../images/icon-arrow.svg'
 import categoriesIcon from '../images/icon-categories.svg'
 import typesIcon from '../images/icon-types.svg'
 import orders from '../images/icon-orders.svg'
+
 function Sidenav() {
   const [dropRight, setDropRight] = useState(false)
 
@@ -21,46 +22,41 @@ function Sidenav() {
     <div className="container dashboard">
       <nav className="sidenav">
         <div className="sidenav_logo">
-          <img src={logo} className="logo" />
+          <img src={logo} className="logo" alt="icon" />
         </div>
         <div className="sidenav_links">
           <Link to="/dashboard">
             <div className="link">
-              <img src={homepage} />
+              <img src={homepage} alt="icon" />
               <span>Homepage</span>
-              <img src={arrowIcon} className="arrow-icon" />
+              <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
           </Link>
 
           <Link to="/orders">
             <div className="link">
-              <img src={orders} />
+              <img src={orders} alt="icon" />
               <span>Orders</span>
-              <Link to="/home">
-                <img src={arrowIcon} className="arrow-icon" />
-              </Link>
+              <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
           </Link>
 
-          <Link
-            to="/settings"
-            onMouseOver={onMouseEnter}
-            onMouseLeave={onMouseLeave}>
+          <Link to="#" onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className="link">
-              <img src={settings} />
+              <img src={settings} alt="icon" />
               <span>Settings</span>
-              <img src={arrowIcon} className="arrow-icon" />
+              <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
             <ul className={`dropdownItems ${dropRight ? 'd-block' : 'd-none'}`}>
               <li>
                 <Link to="/categories">
-                  <img src={categoriesIcon} />
+                  <img src={categoriesIcon} alt="icon" />
                   Categories
                 </Link>
               </li>
               <li>
                 <Link to="/types">
-                  <img src={typesIcon} />
+                  <img src={typesIcon} alt="icon" />
                   Types
                 </Link>
               </li>

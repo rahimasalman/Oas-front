@@ -34,43 +34,44 @@ function Dashboard() {
     <div className="container dashboard">
       <nav className="sidenav">
         <div className="sidenav_logo">
-          <img src={logo} className="logo" />
+          <img src={logo} className="logo" alt="icon" />
         </div>
         <div className="sidenav_links">
           <Link to="/dashboard">
             <div className="link">
-              <img src={homepage} />
+              <img src={homepage} alt="icon" />
               <span>Homepage</span>
-              <img src={arrowIcon} className="arrow-icon" />
+              <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
           </Link>
-
-          <a>
+          <Link to="#">
             <div className="link">
-              <img src={orders} />
+              <img src={orders} alt="icon" />
               <span>Orders</span>
-              <img src={arrowIcon} className="arrow-icon" />
+              <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
-          </a>
-          <a onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
+          </Link>
+          <div onMouseOver={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className="link">
-              <img src={settings} />
+              <img src={settings} alt="icon" />
               <span>Settings</span>
-              <img src={arrowIcon} className="arrow-icon" />
+              <img src={arrowIcon} className="arrow-icon" alt="icon" />
             </div>
             <ul className={`dropdownItems ${dropRight ? 'd-block' : 'd-none'}`}>
               <li>
                 <Link to="/categories">
-                  <img src={categoriesIcon} />
+                  <img src={categoriesIcon} alt="icon" />
                   Categories
                 </Link>
               </li>
               <li>
-                <img src={typesIcon} />
-                Types
+                <Link to="/types">
+                  <img src={typesIcon} alt="icon" />
+                  Types
+                </Link>
               </li>
             </ul>
-          </a>
+          </div>
         </div>
       </nav>
       <main>
