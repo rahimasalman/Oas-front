@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
 body {
-  font-family: Montserrat sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
+// Signin page sass file
 .main {
   height: 100vh;
   background-color: #f1f1f1;
@@ -98,7 +101,8 @@ body {
   }
 }
 
-.dashboard {
+// Sidebar component sass file
+.sidebar {
   .sidenav {
     height: 100%;
     width: 210px;
@@ -193,14 +197,16 @@ body {
       }
     }
   }
-
-  main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 10px;
-  }
 }
 
+// dashboard page sass file
+.dashboard {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 10px;
+}
+
+// categories page sass file
 .categories {
   margin-left: 260px; /* Same as the width of the sidenav */
   padding-top: 60px;
@@ -266,31 +272,6 @@ body {
     }
   }
 }
-
-.operation-name {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0em;
-  text-align: center;
-}
-.plus-icon {
-  padding-right: 0.5rem;
-  padding-left: 0;
-  margin: 0;
-}
-.category-name {
-  font-weight: 700;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  text-transform: capitalize;
-  color: #525653;
-}
-
-// .home {
-//   overflow: scroll;
-// }
 
 // /* Extra small devices (phones, 600px and down) */
 // @media only screen and (max-width: 640px) {...}
