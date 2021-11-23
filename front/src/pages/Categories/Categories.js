@@ -12,7 +12,11 @@ import iconCancel from '../../images/icon-cancel.svg'
 import { FaPlus } from 'react-icons/fa'
 
 function Categories() {
+  let manualID = 0
   const [category, setCategory] = useState({
+    name: '',
+  })
+  const [editCategory, setEditCategory] = useState({
     name: '',
   })
   const [list, setList] = useState([])
@@ -25,6 +29,8 @@ function Categories() {
   const onInputChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value })
   }
+
+  console.log(editCategory)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -162,7 +168,7 @@ function Categories() {
                           placeholder="Enter"
                           required
                           name="name"
-                          value={category}
+                          value={category.name}
                           onChange={(e) => onInputChange(e)}
                         />
                         <div className="invalid-feedback">
@@ -205,14 +211,18 @@ function Categories() {
           </thead>
           <tbody>
             {list.map((item, index) => {
+              manualID++
+
               return (
                 <tr key={index}>
-                  <th scope="row">{item.id}</th>
+                  <th scope="row">{manualID}</th>
                   <td>
                     {editId === item.id ? (
                       <input
                         value={item.name}
-                        onChange={(e) => setCategory(e.target.value)}
+                        onChange={(e) =>
+                          setEditCategory({ name: e.target.value })
+                        }
                       />
                     ) : (
                       <span>{item.name}</span>
